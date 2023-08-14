@@ -1,20 +1,27 @@
 import 'package:flutter/material.dart';
 
 class MyButton extends StatelessWidget {
-  final color;
-  final textColor;
+  final Color? color;
+  final Color textColor;
   final String buttonText;
-  final buttonTapped;
+  final VoidCallback buttonTapped;
+  final VoidCallback? buttonDoubleTapped;
 
   // MyButton({this.color, this.textColor, this.buttonText});
   // MyButton({this.color, this.textColor, required this.buttonText});
-  MyButton(
-      {this.color, this.textColor, this.buttonText = '', this.buttonTapped});
+  const MyButton(
+      {super.key,
+      this.color,
+      required this.textColor,
+      this.buttonText = '',
+      required this.buttonTapped,
+      this.buttonDoubleTapped});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: buttonTapped,
+      onDoubleTap: buttonDoubleTapped,
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: ClipRRect(
